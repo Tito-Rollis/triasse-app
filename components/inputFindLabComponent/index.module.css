@@ -1,0 +1,9 @@
+.inputContainer input::-webkit-input-placeholder {
+    color: #686b7f;
+    border-color: 'white';
+    font-size: 12px;
+}
+
+.inputContainer input {
+    color: #686b7f;
+}

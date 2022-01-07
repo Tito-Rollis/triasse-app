@@ -12,7 +12,8 @@ module.exports = {
             orange: '#FF7900',
         },
         fontSize: {
-            title: '20px',
+            title: '16px',
+            titleLarge: '20px',
             subTitle: '14px',
             p: '10px',
             pLarge: '12px',

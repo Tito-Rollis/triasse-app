@@ -2,9 +2,9 @@ import Image from 'next/image';
 import HamburgerComponent from '../hamburgerComponent/hamburgerComponent';
 export default function HeaderComponent({ handler }) {
     return (
-        <div className="w-screen flex flex-wrap ">
+        <div className="w-screen flex flex-wrap">
             {/* FIRST HEADER */}
-            <div className="py-3  lg:px-20 px-10 flex justify-center lg:justify-end gap-6 lg:gap-8  bg-grey-100 w-full">
+            <div className="py-3  lg:px-44 px-10 flex justify-center lg:justify-end gap-6 lg:gap-8  bg-grey-200 w-full">
                 <div className="flex gap-1 items-center">
                     <Image
                         src="/img/img-calendar.svg"
@@ -40,7 +40,7 @@ export default function HeaderComponent({ handler }) {
                 </div>
             </div>
             {/* SECOND HEADER */}
-            <div className="py-3 lg:px-20 px-10 flex w-full justify-between items-center">
+            <div className="py-3 lg:px-44 px-10 flex w-full justify-between items-center">
                 <Image
                     src="/img/img-brand-logo.png"
                     alt="Logo"
@@ -50,21 +50,27 @@ export default function HeaderComponent({ handler }) {
                 <div className="hidden gap-x-8 items-center md:flex">
                     {/* LINK HEADER */}
                     <div className="flex gap-6">
-                        <h1 className="text-subTitle text-blue-200">
+                        <h1 className="text-subTitle font-medium text-blue-200">
                             Paket Test Darah
                         </h1>
-                        <h1 className="text-subTitle text-blue-200">
+                        <h1 className="text-subTitle font-medium text-blue-200">
                             Laboratorium
                         </h1>
-                        <h1 className="text-subTitle text-blue-200">Artikel</h1>
+                        <h1 className="text-subTitle font-medium text-blue-200">
+                            Artikel
+                        </h1>
                     </div>
                     {/* BUTTON HEADER */}
                     <div className="flex gap-x-5">
                         <button className="py-2 px-6 rounded-sm bg-whiteBlue">
-                            <p className="text-blue-100 font-medium">Masuk</p>
+                            <p className="text-blue-100 text-subTitle font-medium">
+                                Masuk
+                            </p>
                         </button>
                         <button className="py-2 px-6 rounded-sm bg-blue-100">
-                            <p className="text-white font-medium">Daftar</p>
+                            <p className="text-white text-subTitle font-medium">
+                                Daftar
+                            </p>
                         </button>
                     </div>
                 </div>
