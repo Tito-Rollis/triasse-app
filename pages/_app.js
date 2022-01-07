@@ -1,7 +1,11 @@
-import '../styles/globals.css'
-
+import '../styles/globals.css';
+import { NavbarContextWrapper } from '../context/navbarContext';
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+    return (
+        <NavbarContextWrapper>
+            <Component {...pageProps} />
+        </NavbarContextWrapper>
+    );
 }
 
-export default MyApp
+export default MyApp;

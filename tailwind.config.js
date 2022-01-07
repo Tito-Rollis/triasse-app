@@ -14,7 +14,8 @@ module.exports = {
         fontSize: {
             title: '20px',
             subTitle: '14px',
-            p: '12px',
+            p: '10px',
+            pLarge: '12px',
         },
         extend: {},
     },
