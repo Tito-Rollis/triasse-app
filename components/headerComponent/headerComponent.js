@@ -12,7 +12,7 @@ export default function HeaderComponent({ handler }) {
                         width="15.833"
                         height="16.225"
                     />
-                    <p className="lg:text-pLarge text-p text-grey-300">
+                    <p className="lg:text-pLarge text-p text-grey-400">
                         Senin - Jumat &#40;09.00 - 18.00 WIB &#41;
                     </p>
                 </div>
@@ -23,7 +23,7 @@ export default function HeaderComponent({ handler }) {
                         width="22.007"
                         height="15.656"
                     />
-                    <p className="lg:text-pLarge text-p text-grey-300">
+                    <p className="lg:text-pLarge text-p text-grey-400">
                         +62811 1122 015
                     </p>
                 </div>
@@ -34,7 +34,7 @@ export default function HeaderComponent({ handler }) {
                         width="19.239"
                         height="13.158"
                     />
-                    <p className="lg:text-pLarge text-p text-grey-300">
+                    <p className="lg:text-pLarge text-p text-grey-400">
                         cs@triasse.com
                     </p>
                 </div>
