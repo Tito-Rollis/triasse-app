@@ -13,7 +13,7 @@ module.exports = {
                 400: '#686B7F',
             },
             whiteBlue: '#EFF7FF',
-            blue: { 100: '#208AE5', 200: '#0A315F' },
+            blue: { 100: '#208AE5', 200: '#0A315F', 300: '#062140' },
             orange: '#FF7900',
         },
         fontSize: {

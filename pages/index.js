@@ -5,28 +5,19 @@ import HeaderComponent from '../components/headerComponent/headerComponent';
 import { NavbarContext } from '../context/navbarContext';
 import OverlayComponent from '../components/overlayComponent/overlayComponent';
 import InputFindLabComponent from '../components/inputFindLabComponent/inputFindLabComponent';
-import styles from '../styles/Home.module.css';
+import CardComponent from '../components/cardComponent/cardComponent';
+import Card2Component from '../components/cardComponent/card2Component';
 
-const DATA = [
-    {
-        title: 'Jaminan harga terbaik',
-        text: 'Harga kompetitif di Laboratorium terbesar dan terpecaya di Indonesia seperti Prodia, Kimia Farma, Parahita, GS Lab & Biotest.',
-    },
-    {
-        title: 'Layanan homoe service',
-        text: 'Pemeriksaan bisa dilakukan di rumah sendiri dengan layanan Home Service, petugas datang untuk melakukan pengecekan dan tes.',
-    },
-    {
-        title: 'Cicilan 4x dengan bunga 0%',
-        text: 'Pembayaran paket pemeriksaan lebih ringan karena bisa dicicil sebanyak empat kali, dan tanpa bunga tambahan.',
-    },
-    {
-        title: 'Pesan dan hasil online',
-        text: 'Pesan dan hasil pemeriksaan bisa dilakukan secara online, proses lebih cepat tanpa perlu antri di lab.',
-    },
-];
+import styles from '../styles/Home.module.css';
+import { DATA } from './api/dummy_data/dummy_data';
 
 export default function Home() {
+    const WHY = DATA[0].why;
+    const LOREM = DATA[1].lorem;
+    const MITRA = DATA[2].mitra;
+    const LOREM_2 = DATA[3].lorem_2;
+    const MEDIA = DATA[4].media;
+    const TEXT = DATA[5].text;
     let { val } = useContext(NavbarContext);
     const [flex, setFlex] = useState('hidden');
 
@@ -39,11 +30,11 @@ export default function Home() {
                 <OverlayComponent display={flex} />
                 <HeaderComponent />
                 <div className="w-screen relative ">
-                    <div className="overflow-hidden w-full">
+                    <div className=" relative h-56 w-full">
                         <Image
                             src="/img/img-big-banner.jpg"
-                            width={1366}
-                            height={331}
+                            layout="fill"
+                            objectFit="cover"
                             alt="banner"
                         />
                     </div>
@@ -135,7 +126,7 @@ export default function Home() {
                     <div className="bg-grey-300 rounded-md col-span-2 row-span-1 md:col-span-1 md:row-span-2 "></div>
                     {/* RIGHT SIDE */}
                     <div className=" flex gap-y-6 flex-col col-span-2 md:col-span-1 md:row-span-2">
-                        {DATA.map((data, index) => {
+                        {WHY.map((data, index) => {
                             return (
                                 <div
                                     key={index}
@@ -166,18 +157,129 @@ export default function Home() {
                     Blanditiis, similique.
                 </p>
                 {/* CARDS */}
-                <div>
-                    <div className="w-40 h-60 bg-orange rounded-md">
-                        <div className="w-full h-28 bg-blue-100 relative">
-                            <Image
-                                src="/img/img-example-big-2.png"
-                                alt="Example"
-                                layout="fill"
-                                objectFit="fill"
+                <div className="flex w-full justify-center md:justify-between flex-wrap gap-4  items-center mt-11">
+                    {/* CARD */}
+                    {LOREM.map((data, index) => {
+                        return (
+                            <CardComponent
+                                key={index}
+                                title={data.title}
+                                text={data.text}
+                                price={data.price}
+                                discount={data.discount}
                             />
-                        </div>
+                        );
+                    })}
+                </div>
+                {/* BANNER */}
+                <div className="grid grid-cols-2 md:grid-rows-none grid-rows-2 gap-5 mt-10 ">
+                    <div className="col-span-2 md:col-span-1">
+                        <Image
+                            src="/img/img-banner2-1.jpg"
+                            width="564"
+                            height="213"
+                            alt="banner"
+                        />
+                    </div>
+                    <div className="col-span-2 md:col-span-1 md:justify-self-end">
+                        <Image
+                            src="/img/img-banner2-2.jpg"
+                            width="564"
+                            height="213"
+                            alt="banner"
+                        />
                     </div>
                 </div>
+            </div>
+            {/* MITRA SECTION*/}
+            <div className="w-full bg-whiteBlue py-16 lg:px-44 px-10">
+                <h1 className="text-titleLarge text-blue-200 font-bold text-center ">
+                    Mitra Laboratorium Terbaik di Indonesia
+                </h1>
+                <p className="text-center text-blue-200 text-subTitle mt-4">
+                    Triassee tersedia di 44 cabang seluruh Indonesia, dengan
+                    sebaran di 16 kota besar yang bisa dipesan secara{' '}
+                    <span className="italic">online.</span>
+                </p>
+                {/* IMG */}
+                <div className="w-full flex justify-center lg:justify-between flex-wrap gap-x-4 gap-y-4  mt-16">
+                    {MITRA.map((data, index) => {
+                        return (
+                            <div
+                                className="relative w-36 h-16 lg:w-48"
+                                key={index}
+                            >
+                                <Image
+                                    // width="163"
+                                    // height="62"
+                                    layout="fill"
+                                    objectFit="contain"
+                                    src={data.src}
+                                    alt={`mitra ${index + 1}`}
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+            {/* LOREM 2 SECTION*/}
+            <div className="w-full  py-16  px-10">
+                <h1 className="text-titleLarge text-blue-200 font-bold text-center ">
+                    Lorem ipsum dolor sit amet
+                </h1>
+                <p className="text-center text-blue-200 text-subTitle mt-4">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Libero placeat nihil aperiam reprehenderit.
+                </p>
+                {/* CARDS */}
+                <div className="flex w-full justify-center  flex-wrap gap-4  items-center mt-11">
+                    {/* CARD */}
+                    {LOREM_2.map((data, index) => {
+                        return (
+                            <Card2Component key={index} title={data.title} />
+                        );
+                    })}
+                </div>
+            </div>
+            {/* MEDIA SECTION*/}
+            <div
+                style={{ borderBottom: '1px solid black' }}
+                className="  pt-16 pb-36  mx-10  self-center"
+            >
+                <h1 className="text-titleLarge text-blue-200 font-bold text-center">
+                    Media Coverage
+                </h1>
+                {/* IMAGES */}
+                <div className="w-full flex justify-center gap-4 flex-wrap mt-12">
+                    {/* IMAGE */}
+                    {MEDIA.map((data, index) => {
+                        return (
+                            <div className="relative w-40 h-12" key={index}>
+                                <Image
+                                    src={data.src}
+                                    layout="fill"
+                                    objectFit="contain"
+                                    alt="media"
+                                />
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+            {/* TEXT SECTION*/}
+            <div className="w-full gap-y-4 flex flex-col py-16 lg:px-44 px-10">
+                {TEXT.map((data, index) => {
+                    return (
+                        <div key={index} className="flex gap-y-1 flex-col">
+                            <h1 className="text-subTitle text-blue-200 font-medium">
+                                {data.title}
+                            </h1>
+                            <p className="text-pLarge text-grey-400">
+                                {data.text}
+                            </p>
+                        </div>
+                    );
+                })}
             </div>
         </LayoutComponent>
     );
