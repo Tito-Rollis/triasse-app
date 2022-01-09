@@ -1,16 +1,18 @@
 import LayoutComponent from '../components/layoutComponent/layoutComponent';
 import HeaderComponent from '../components/headerComponent/headerComponent';
 import AuthComponent from '../components/authComponent/authComponent';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../context/authContext';
 export default function Register() {
+    const { register } = useContext(AuthContext);
     const [agreed, setAgreed] = useState(true);
     const isAgree = () => setAgreed(!agreed);
     return (
         <LayoutComponent>
-            <HeaderComponent display="hidden" />
+            <HeaderComponent firstHeader="hidden" secondHeader="hidden" />
             <div className="w-full h-screen bg-grey-300 flex flex-col gap-y-4 justify-center items-center">
                 <AuthComponent
-                    title="Masuk"
+                    title="Daftar"
                     text="Belum punya akun? "
                     type="Masuk"
                     placeholder="Nomor Telepon"
@@ -19,8 +21,9 @@ export default function Register() {
                     toc="block"
                     or="atau daftar dengan"
                     link="/login"
+                    handler={register}
                 />
-                <div className="flex gap-x-2 items-center">
+                <div className="flex  gap-x-2 items-center">
                     {/* RADIO BUTTON */}
                     <div
                         onClick={isAgree}

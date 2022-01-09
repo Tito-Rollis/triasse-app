@@ -45,7 +45,7 @@ export default function Home() {
         <LayoutComponent>
             <div className="w-full h-screen">
                 <OverlayComponent display={flex} />
-                <HeaderComponent display="flex" />
+                <HeaderComponent firstHeader="flex" secondHeader="md:flex" />
                 <div className="w-full relative ">
                     <div className=" relative h-56 w-full overflow-hidden">
                         <Image

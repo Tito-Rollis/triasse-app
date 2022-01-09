@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import style from './index.module.css';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 export default function AuthComponent({
     title,
     text,
@@ -12,9 +12,16 @@ export default function AuthComponent({
     toc,
     or,
     link,
+    login,
+    googleSign,
+    facebookSign,
 }) {
     const [peeking, setPeeking] = useState(false);
     const peek = () => setPeeking(!peeking);
+    const loginHandler = () =>
+        login(emailRef.current.value, passRef.current.value);
+    let emailRef = useRef();
+    let passRef = useRef();
     return (
         <div className="w-4/5 md:w-2/5  shadow-md  flex flex-col gap-y-5 bg-white p-6 rounded-md">
             <div className="flex flex-wrap justify-center items-center md:justify-between">
@@ -33,6 +40,7 @@ export default function AuthComponent({
                 className={`${style.inputContainer} w-full h-10 border flex rounded-sm`}
             >
                 <input
+                    ref={emailRef}
                     className="flex-1 pl-4"
                     placeholder={placeholder}
                     type="text"
@@ -42,6 +50,7 @@ export default function AuthComponent({
                 className={`${style.inputContainer}  w-full h-10 border ${flex} justify-between pr-4 rounded-sm`}
             >
                 <input
+                    ref={passRef}
                     className="flex-1 pl-4 "
                     placeholder="Password"
                     type={peeking ? 'text' : 'password'}
@@ -59,7 +68,8 @@ export default function AuthComponent({
             </div>
             {/* BUTTON */}
             <div
-                className={`w-full h-10 bg-orange flex items-start justify-center rounded-sm`}
+                onClick={loginHandler}
+                className={`w-full h-10 bg-orange flex items-start justify-center rounded-sm cursor-pointer`}
             >
                 <Link passHref href="/">
                     <h1 className="text-white font-medium self-center">
@@ -82,12 +92,18 @@ export default function AuthComponent({
             </div>
             {/* OPTION */}
             <div className="flex flex-wrap gap-y-4 gap-x-6">
-                <div className="bg-blue-200 flex items-center justify-between p-2 flex-1">
+                <div
+                    onClick={facebookSign}
+                    className="bg-blue-200 flex items-center justify-between p-2 flex-1 cursor-pointer"
+                >
                     <Image src="/img/fb.svg" width="24" height="24" alt="" fb />
                     <p className="text-white font-medium">Facebook</p>
                     <div className="w-6"></div>
                 </div>
-                <div className="bg-white border border-blue-300 flex items-center justify-between p-2 flex-1">
+                <div
+                    onClick={googleSign}
+                    className="bg-white border border-blue-300 flex items-center justify-between p-2 flex-1 cursor-pointer"
+                >
                     <Image
                         src="/img/img-google.png"
                         width="24"
