@@ -21,6 +21,7 @@ module.exports = {
                 300: '#0C5237',
                 400: '#2FC33A',
             },
+            pink: { 100: '#FFE5E5', 200: '#DB2828' },
         },
         fontSize: {
             title: '16px',
