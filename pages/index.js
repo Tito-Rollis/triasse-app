@@ -1,15 +1,18 @@
 import Image from 'next/image';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import LayoutComponent from '../components/layoutComponent/layoutComponent';
 import HeaderComponent from '../components/headerComponent/headerComponent';
 import { NavbarContext } from '../context/navbarContext';
+import { InputContext } from '../context/inputContext';
 import OverlayComponent from '../components/overlayComponent/overlayComponent';
 import InputFindLabComponent from '../components/inputFindLabComponent/inputFindLabComponent';
 import CardComponent from '../components/cardComponent/cardComponent';
 import Card2Component from '../components/cardComponent/card2Component';
+import ResultComponent from '../components/resultComponent/resultComponent';
 
 import styles from '../styles/Home.module.css';
 import { DATA } from './api/dummy_data/dummy_data';
+import ModalComponent from '../components/modalComponent/modalComponent';
 
 export default function Home() {
     const WHY = DATA[0].why;
@@ -18,19 +21,33 @@ export default function Home() {
     const LOREM_2 = DATA[3].lorem_2;
     const MEDIA = DATA[4].media;
     const TEXT = DATA[5].text;
-    let { val } = useContext(NavbarContext);
+    const { val } = useContext(NavbarContext);
+    const { toggle, show, packet, addPacket } = useContext(InputContext);
     const [flex, setFlex] = useState('hidden');
 
     useEffect(() => {
         val ? setFlex('flex') : setFlex('hidden');
     }, [val]);
+
+    // MODAL HANDLER
+    const [showModal, setShowModal] = useState(false);
+    const modalHandler = () => setShowModal(!showModal);
+
+    // PACKET
+    let packetRef = useRef();
+    const add = () => {
+        addPacket(packetRef.current?.innerText);
+        console.log(packetRef.current?.innerText);
+    };
+    console.log(packet);
+
     return (
         <LayoutComponent>
-            <div className="h-screen">
+            <div className="w-full h-screen">
                 <OverlayComponent display={flex} />
-                <HeaderComponent />
-                <div className="w-screen relative ">
-                    <div className=" relative h-56 w-full">
+                <HeaderComponent display="flex" />
+                <div className="w-full relative ">
+                    <div className=" relative h-56 w-full overflow-hidden">
                         <Image
                             src="/img/img-big-banner.jpg"
                             layout="fill"
@@ -62,7 +79,7 @@ export default function Home() {
                         {/* 2nd HEADER */}
                         <div className="grid md:grid-cols-1 px-2 md:px-14 md:grid-rows-2 bg-white py-3 w-full">
                             <div className="flex flex-wrap gap-x-3">
-                                <div className="flex-1">
+                                <div className="md:flex-1 w-full">
                                     <p className="md:text-pLarge text-blue-200">
                                         Provinsi
                                     </p>
@@ -72,10 +89,14 @@ export default function Home() {
                                         alt="pin"
                                         w="13.362"
                                         h="19.204"
-                                        placeholder="Pilih provinsi"
+                                        placeholder={
+                                            show
+                                                ? 'DKI Jakarta'
+                                                : 'Pilih provinsi'
+                                        }
                                     />
                                 </div>
-                                <div className="flex-1">
+                                <div className="md:flex-1 w-full">
                                     <p className="md:text-pLarge text-blue-200">
                                         Kota/Kabupaten
                                     </p>
@@ -85,10 +106,16 @@ export default function Home() {
                                         alt="map"
                                         w="21.171"
                                         h="19.204"
-                                        placeholder="Pilih kota/kabupaten"
+                                        placeholder={
+                                            show
+                                                ? 'Jakarta Pusat'
+                                                : 'Pilih kota/kabupaten'
+                                        }
                                     />
                                 </div>
-                                <div className="flex-1">
+                                <div
+                                    className={`${styles.scroll} md:flex-1 w-full  relative`}
+                                >
                                     <p className="md:text-pLarge text-blue-200">
                                         Paket & jenis pemeriksaan
                                     </p>
@@ -98,15 +125,37 @@ export default function Home() {
                                         alt="stetoscop"
                                         w="18.185"
                                         h="19.204"
+                                        handler={toggle}
                                         placeholder="Pilih paket atau jenis pemeriksaan"
+                                    />
+                                    {/* MODAL */}
+                                    <ModalComponent
+                                        pick={packetRef}
+                                        add={add}
                                     />
                                 </div>
                             </div>
-                            <button className="bg-orange md:justify-self-end h-9 self-center md:self-end py-2 px-9 ">
-                                <p className="text-subTitle text-white">
-                                    Cari lab
-                                </p>
-                            </button>
+                            <div className="grid grid-cols-2">
+                                {packet &&
+                                    packet.map(
+                                        (value, index) =>
+                                            Object.values(value)[0] ===
+                                                packetRef.current
+                                                    ?.innerText && (
+                                                <ResultComponent
+                                                    key={index}
+                                                    title={
+                                                        Object.values(value)[0]
+                                                    }
+                                                />
+                                            )
+                                    )}
+                                <button className="bg-orange md:justify-self-end h-9 self-center md:self-end py-2 px-9 ">
+                                    <p className="text-subTitle text-white">
+                                        Cari lab
+                                    </p>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>

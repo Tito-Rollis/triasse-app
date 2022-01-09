@@ -1,9 +1,12 @@
 import '../styles/globals.css';
 import { NavbarContextWrapper } from '../context/navbarContext';
+import { InputContextWrapper } from '../context/inputContext';
 function MyApp({ Component, pageProps }) {
     return (
         <NavbarContextWrapper>
-            <Component {...pageProps} />
+            <InputContextWrapper>
+                <Component {...pageProps} />
+            </InputContextWrapper>
         </NavbarContextWrapper>
     );
 }

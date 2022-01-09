@@ -2,8 +2,9 @@ import style from './index.module.css';
 import Image from 'next/image';
 export default function LayoutComponent({ children }) {
     return (
-        <div className="w-screen h-full  ">
+        <div className="w-full h-full  ">
             {children}
+            {/* FOOTER */}
             <div className="w-full bg-blue-100 py-10 flex flex-col md:flex-row justify-center gap-y-4 gap-x-8 items-center">
                 <h1 className="text-title text-white tracking-wider font-bold text-center">
                     Berlangganan newsletter spesial promo dan penawaran terbaik

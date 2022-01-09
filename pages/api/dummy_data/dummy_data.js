@@ -6,7 +6,7 @@ export const DATA = [
                 text: 'Harga kompetitif di Laboratorium terbesar dan terpecaya di Indonesia seperti Prodia, Kimia Farma, Parahita, GS Lab & Biotest.',
             },
             {
-                title: 'Layanan homoe service',
+                title: 'Layanan home service',
                 text: 'Pemeriksaan bisa dilakukan di rumah sendiri dengan layanan Home Service, petugas datang untuk melakukan pengecekan dan tes.',
             },
             {
@@ -92,7 +92,7 @@ export const DATA = [
     {
         text: [
             {
-                title: 'Toko Furniture Online Tercepaya di Indonesia',
+                title: 'Toko Furniture Online Terpercaya di Indonesia',
                 text: 'Bramblefurniture.com adalah sebuah platform e-commerce milik Bramble Furniture yang menjual beragam pilihan furniture beserta dekorasi terlengkap yang dapat di-custom dari material kayu mahoni berkualitas. Ada lebih dari 500 produk yang bisa dibeli dengan bermacam pilihan finishing, dari warna hingga motif. jenis custom dan finishing yang dipilih  akan menentukan hasil akhir furniture yang diinginkan untuk kesan yang lebih personal dan tetap mengedepankan kualitas dan ketahanan.',
             },
             {
@@ -108,7 +108,7 @@ export const DATA = [
                 text: 'Apapun gaya interior rumah Anda, dari minimalis, modern, mid-century, hingga skandinavia akan jadi lebih hidup dan bergaya dengan pilihan furniture, mebel, dan perlengkapan yang tepat. Brumble Furniture menyediakan beragam gaya furniture yang cocok untuk gaya rumah masa kini, seperti gaya American Style, Parisian, Coastal, Urban, dan sebagainya. Temukan furniture dan perlengkapan yang sesuai untuk rumah Anda berdasarkan kategori produk kami, seperti Meja Tamu, Meja Kerja, Meja Makan, Meja Konsul, Rak Buku, Lemari Dapur, Kursi Panjang Panjang, Kursi Malas, Kursi Makan, Bangku, Lemari Pakaian, Lemari Pajangan, Kabinet Kamar Mandi, Kabinet Wastafel, Cermin, Lampu Gantung, Lampu Lantai, Lampu Meja, dan masih banyak lagi. Furniture yang dipilih dapat di-custom dari warna dan pengerjaannya untuk menunjang interior rumah masa kini, seperti minimalis, mid-century, modern, hingga skandinavia. Tunggu apalagi, dekor rumah impian Anda dengan pilihan furniture yang beragam dan berkualitas sekarang juga!',
             },
             {
-                title: 'Grtis Ongkir Furniture Seluruh Jabodetabek',
+                title: 'Gratis Ongkir Furniture Seluruh Jabodetabek',
                 text: 'Dapatkan promo gratis ongkir untuk pengiriman furniture di wilayah Jakarta dan sekitarnya! Beli furniture online dengan tenang tanpa harus pusing dengan biaya pengiriman hanya di Bramble Furniture Indonesia.',
             },
         ],
