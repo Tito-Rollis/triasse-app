@@ -1,8 +1,8 @@
-export default function Overlay({ display }) {
+export default function HeaderModalComponent({ display }) {
     return (
         <>
             <ul
-                className={`w-2/4 border-2 rounded-md z-20 transition-all bg-orange transform ${display} flex md:hidden flex-col justify-start absolute right-0 top-10 pb-6 bg-gray-700 h-96`}
+                className={`w-2/4 border-2 rounded-md z-10 transition-all bg-orange transform ${display} flex md:hidden flex-col justify-start absolute right-0 top-10 pb-6 bg-gray-700 h-96`}
             >
                 <li className="h-full flex text-pLarge text-blue-200 font-medium  items-center pl-4  transition-all hover:bg-whiteBlue">
                     Paket Test Darah

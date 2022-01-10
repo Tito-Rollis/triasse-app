@@ -12,10 +12,10 @@ export default function HeaderComponent({
     const { isLogin, user, logOut } = useContext(AuthContext);
     console.log('isLogin?? ' + isLogin);
     return (
-        <div className="w-full flex flex-wrap shadow-md z-10 relative">
+        <div className="w-full flex flex-wrap shadow-md  relative">
             {/* FIRST HEADER */}
             <div
-                className={`py-3 ${firstHeader} lg:px-44 px-10 flex justify-center lg:justify-end gap-6 lg:gap-8  bg-grey-200 w-full`}
+                className={`py-3 ${firstHeader} lg:px-44 px-10 flex justify-center lg:justify-end gap-6 lg:gap-8 z-0  bg-grey-200 w-full`}
             >
                 <div className="flex gap-1 items-center">
                     <Image

@@ -4,16 +4,15 @@ import LayoutComponent from '../components/layoutComponent/layoutComponent';
 import HeaderComponent from '../components/headerComponent/headerComponent';
 import { NavbarContext } from '../context/navbarContext';
 import { InputContext } from '../context/inputContext';
-import OverlayComponent from '../components/overlayComponent/overlayComponent';
+import HeaderModalComponent from '../components/headerModalComponent/headerModalComponent';
 import InputFindLabComponent from '../components/inputFindLabComponent/inputFindLabComponent';
 import CardComponent from '../components/cardComponent/cardComponent';
 import Card2Component from '../components/cardComponent/card2Component';
 import ResultComponent from '../components/resultComponent/resultComponent';
-
+import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 import { DATA } from './api/dummy_data/dummy_data';
 import ModalComponent from '../components/modalComponent/modalComponent';
-import PacketCardComponent from '../components/packetCardComponent/packetCardComponent';
 
 export default function Home() {
     const WHY = DATA[0].why;
@@ -31,8 +30,8 @@ export default function Home() {
     }, [val]);
 
     // FIND PACKET BUTTON
-    const [finded, setFinded] = useState(false);
-    const find = () => setFinded(!finded);
+    const router = useRouter();
+    const toPacketList = () => router.push('/packet');
 
     // PACKET
     let packetRef = useRef();
@@ -43,16 +42,12 @@ export default function Home() {
 
     return (
         <LayoutComponent>
-            <div className={`w-full ${finded ? '' : 'h-screen'}`}>
-                <OverlayComponent display={flex} />
+            <div className={`w-full h-screen`}>
+                <HeaderModalComponent display={flex} />
                 <HeaderComponent firstHeader="flex" secondHeader="md:flex" />
                 {/* JUMBOTRON */}
                 <div className="w-full relative ">
-                    <div
-                        className={`h-56 w-full overflow-hidden ${
-                            finded ? 'hidden' : 'relative'
-                        }`}
-                    >
+                    <div className={`h-56 w-full overflow-hidden relative`}>
                         <Image
                             src="/img/img-big-banner.jpg"
                             layout="fill"
@@ -61,19 +56,11 @@ export default function Home() {
                         />
                     </div>
                     <div
-                        className={`${
-                            finded ? 'relative' : 'absolute'
-                        } flex flex-col ${finded ? 'left-0' : 'left-10'} ${
-                            finded ? 'right-0' : 'right-10'
-                        } top-3/4 ${
-                            finded ? 'border-b-2 border-blue-100' : 'shadow-lg'
-                        } `}
+                        className={`absolute flex flex-col left-10 right-10 top-3/4 shadow-lg`}
                     >
                         {/* 1st HEADER */}
                         <div
-                            className={`w-full bg-whiteBlue px-6 md:${
-                                finded ? 'px-44' : 'px-14'
-                            } rounded-sm  grid grid-cols-2 grid-rows-2 md:grid-rows-1`}
+                            className={`w-full bg-whiteBlue px-6 md:px-14 rounded-sm  grid grid-cols-2 grid-rows-2 md:grid-rows-1`}
                         >
                             <div className="flex flex-col col-span-2 md:col-span-1  self-center py-2 gap-y-2">
                                 <h1 className="text-title md:text-titleLarge font-bold text-blue-200">
@@ -168,7 +155,7 @@ export default function Home() {
                                             )
                                     )}
                                 <button
-                                    onClick={find}
+                                    onClick={toPacketList}
                                     className="bg-orange col-span-2 md:col-start-2 md:col-end-3 md:justify-self-end h-9 self-center md:self-center py-2 px-9 "
                                 >
                                     <p className="text-subTitle text-white">
@@ -180,17 +167,8 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            {/* PACKET CARDS */}
-            <div
-                className={`${
-                    finded ? 'block' : 'hidden'
-                } h-screen bg-whiteBlue`}
-            >
-                <PacketCardComponent />
-            </div>
-
             {/* CONTENT */}
-            <div className={`${finded ? 'hidden' : 'block'}`}>
+            <div className={`block`}>
                 {/* WHY SECTION */}
                 <div className="w-full bg-whiteBlue h-full py-16 lg:px-44 px-10">
                     <h1 className="text-titleLarge text-blue-200 font-bold text-center ">

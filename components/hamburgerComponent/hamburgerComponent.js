@@ -28,8 +28,7 @@ export default function HamburgerMenu() {
             setHidden('-translate-x-6');
             setTopTransform('rotate-45 translate-y-2');
             setBottomTransform('-rotate-45 -translate-y-2');
-            setZ('z-40');
-            console.log('clicked');
+            setZ('z-50');
         }
         if (!clicked) {
             setHidden('');
@@ -42,10 +41,10 @@ export default function HamburgerMenu() {
     return (
         <button
             onClick={clickHandler}
-            className={`box-border flex flex-col justify-between h-5 overflow-hidden z-10`}
+            className={`box-border flex flex-col justify-between h-5 overflow-hidden z`}
         >
             <span
-                className={`h-1 ${topWidth} ${topTransform} transform ${color}  ${z} z-30 rounded transition-all ${midDuration}`}
+                className={`h-1 ${topWidth} ${topTransform} transform ${color}  ${z} z-50 rounded transition-all ${midDuration}`}
             ></span>
             <span
                 className={`h-1 ${width} ${hidden} ${color} ${z} transform rounded transition-all ${midDuration}`}
