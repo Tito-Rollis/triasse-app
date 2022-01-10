@@ -7,10 +7,15 @@ export function InputContextWrapper({ children }) {
     const toggle = () => setShow(!show);
 
     let [packet, setPacket] = useState([]);
-    const addPacket = (packet) =>
-        setPacket((prev) => [...prev, { packet: packet }]);
+    const addPacket = (packet) => {
+        setPacket((prev) => [...prev, packet]);
+    };
+    const removePacket = (data) => packet.splice(packet.indexOf(data), 1);
+    const deleteAll = () => setPacket([]);
     return (
-        <InputContext.Provider value={{ show, toggle, packet, addPacket }}>
+        <InputContext.Provider
+            value={{ show, toggle, packet, addPacket, removePacket, deleteAll }}
+        >
             {children}
         </InputContext.Provider>
     );

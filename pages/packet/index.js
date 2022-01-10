@@ -4,7 +4,7 @@ import LayoutComponent from '../../components/layoutComponent/layoutComponent';
 import HeaderComponent from '../../components/headerComponent/headerComponent';
 import { NavbarContext } from '../../context/navbarContext';
 import { InputContext } from '../../context/inputContext';
-import OverlayComponent from '../../components/overlayComponent/overlayComponent';
+import HeaderModalComponent from '../../components/headerModalComponent/headerModalComponent';
 import InputFindLabComponent from '../../components/inputFindLabComponent/inputFindLabComponent';
 import ResultComponent from '../../components/resultComponent/resultComponent';
 import { useRouter } from 'next/router';
@@ -14,28 +14,23 @@ import PacketCardComponent from '../../components/packetCardComponent/packetCard
 
 export default function Home() {
     const { val } = useContext(NavbarContext);
-    const { toggle, show, packet, addPacket } = useContext(InputContext);
+    const { toggle, show, packet } = useContext(InputContext);
     const [flex, setFlex] = useState('hidden');
 
     useEffect(() => {
+        setGetPacket(packet);
         val ? setFlex('flex') : setFlex('hidden');
-    }, [val]);
+    }, [val, packet]);
 
     // FIND PACKET BUTTON
     const router = useRouter();
     const toPacketList = () => router.push('/packet');
-
-    // PACKET
-    let packetRef = useRef();
-    const add = () => {
-        addPacket(packetRef.current?.innerText);
-        console.log(packetRef.current?.innerText);
-    };
+    const [getPacket, setGetPacket] = useState([]);
 
     return (
         <LayoutComponent>
             <div className={`w-full`}>
-                <OverlayComponent display={flex} />
+                <HeaderModalComponent display={flex} />
                 <HeaderComponent firstHeader="flex" secondHeader="md:flex" />
                 {/* JUMBOTRON */}
                 <div className="w-full relative ">
@@ -125,27 +120,24 @@ export default function Home() {
                                         placeholder="Pilih paket atau jenis pemeriksaan"
                                     />
                                     {/* MODAL */}
-                                    <ModalComponent
-                                        pick={packetRef}
-                                        add={add}
-                                    />
+                                    <ModalComponent />
                                 </div>
                             </div>
                             <div className="grid grid-cols-2">
-                                {packet &&
-                                    packet.map(
-                                        (value, index) =>
-                                            Object.values(value)[0] ===
-                                                packetRef.current
-                                                    ?.innerText && (
-                                                <ResultComponent
-                                                    key={index}
-                                                    title={
-                                                        Object.values(value)[0]
-                                                    }
-                                                />
-                                            )
-                                    )}
+                                {getPacket &&
+                                    getPacket.map((value, index) => (
+                                        <ResultComponent
+                                            key={index}
+                                            title={value}
+                                        />
+                                    ))}
+                                {getPacket.length >= 1 && (
+                                    <div className="rounded-sm w-fit flex items-center justify-between p-3 h-10 bg-grey-300">
+                                        <h1 className="text-subTitle text-center  text-grey-400">
+                                            Hapus Semua
+                                        </h1>
+                                    </div>
+                                )}
                                 <button
                                     onClick={toPacketList}
                                     className="bg-orange col-span-2 md:col-start-2 md:col-end-3 md:justify-self-end h-9 self-center md:self-center py-2 px-9 "

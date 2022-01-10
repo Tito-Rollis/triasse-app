@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useContext } from 'react';
 import { InputContext } from '../../context/inputContext';
 import ItemModalComponent from './itemModalComponent';
-export default function ModalComponent({ pick, add }) {
+export default function ModalComponent() {
     const { show } = useContext(InputContext);
     return (
         <div
@@ -12,12 +12,11 @@ export default function ModalComponent({ pick, add }) {
         >
             <ItemModalComponent
                 title="Paket Skrining Diabetes Melitus"
-                pick={pick}
+                pick="Paket Skrining Diabetes Melitus"
                 size="text-subTitle"
                 color="text-blue-200"
                 flex="flex-row"
                 align="items-center"
-                add={add}
             >
                 <Image
                     src="/img/img-example-1.png"
@@ -27,9 +26,8 @@ export default function ModalComponent({ pick, add }) {
                 />
             </ItemModalComponent>
             <ItemModalComponent
-                add={add}
                 title="Paket Skrining Penyakit Menular Seksual"
-                pick={pick}
+                pick="Paket Skrining Penyakit Menular Seksual"
                 size="text-subTitle"
                 color="text-blue-200"
                 flex="flex-row"
@@ -43,9 +41,8 @@ export default function ModalComponent({ pick, add }) {
                 />
             </ItemModalComponent>
             <ItemModalComponent
-                add={add}
                 title="Paket TORCH"
-                pick={pick}
+                pick="Paket TORCH"
                 size="text-subTitle"
                 color="text-blue-200"
                 flex="flex-row"
@@ -59,10 +56,9 @@ export default function ModalComponent({ pick, add }) {
                 />
             </ItemModalComponent>
             <ItemModalComponent
-                add={add}
                 title="Nama lain: Glukosa Puasa, Gula Darah Puasa, Glukosa
                 Fasting"
-                pick={pick}
+                pick="Glukosa Puasa"
                 size="text-subText"
                 color="text-grey-400"
                 flex="flex-col"
@@ -73,9 +69,8 @@ export default function ModalComponent({ pick, add }) {
                 </h1>
             </ItemModalComponent>
             <ItemModalComponent
-                add={add}
                 title="Nama lain: Glukosa Sewaktu, Gula Darah Sewaktu"
-                pick={pick}
+                pick="Glukosa Sewaktu"
                 size="text-subText"
                 color="text-grey-400"
                 flex="flex-col"
@@ -86,9 +81,8 @@ export default function ModalComponent({ pick, add }) {
                 </h1>
             </ItemModalComponent>
             <ItemModalComponent
-                add={add}
                 title="Nama lain: Glukosa Urine"
-                pick={pick}
+                pick="Glukosa Urine"
                 size="text-subText"
                 color="text-grey-400"
                 flex="flex-col"

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState, useEffect, useContext, useRef } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import LayoutComponent from '../components/layoutComponent/layoutComponent';
 import HeaderComponent from '../components/headerComponent/headerComponent';
 import { NavbarContext } from '../context/navbarContext';
@@ -22,7 +22,7 @@ export default function Home() {
     const MEDIA = DATA[4].media;
     const TEXT = DATA[5].text;
     const { val } = useContext(NavbarContext);
-    const { toggle, show, packet, addPacket } = useContext(InputContext);
+    const { toggle, show, packet, deleteAll } = useContext(InputContext);
     const [flex, setFlex] = useState('hidden');
 
     useEffect(() => {
@@ -30,15 +30,9 @@ export default function Home() {
     }, [val]);
 
     // FIND PACKET BUTTON
+    const [getPacket, setGetPacket] = useState(packet);
     const router = useRouter();
     const toPacketList = () => router.push('/packet');
-
-    // PACKET
-    let packetRef = useRef();
-    const add = () => {
-        addPacket(packetRef.current?.innerText);
-        console.log(packetRef.current?.innerText);
-    };
 
     return (
         <LayoutComponent>
@@ -133,27 +127,29 @@ export default function Home() {
                                         placeholder="Pilih paket atau jenis pemeriksaan"
                                     />
                                     {/* MODAL */}
-                                    <ModalComponent
-                                        pick={packetRef}
-                                        add={add}
-                                    />
+                                    <ModalComponent />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2">
-                                {packet &&
-                                    packet.map(
-                                        (value, index) =>
-                                            Object.values(value)[0] ===
-                                                packetRef.current
-                                                    ?.innerText && (
-                                                <ResultComponent
-                                                    key={index}
-                                                    title={
-                                                        Object.values(value)[0]
-                                                    }
-                                                />
-                                            )
+                            <div className="grid ">
+                                <div className="col-start-1 col-end-2 flex flex-wrap gap-2">
+                                    {packet &&
+                                        packet.map((value, index) => (
+                                            <ResultComponent
+                                                key={index}
+                                                title={value}
+                                            />
+                                        ))}
+                                    {packet.length >= 1 && (
+                                        <div
+                                            onClick={deleteAll}
+                                            className="rounded-sm w-fit flex items-center justify-between p-3 h-10 bg-grey-300 cursor-pointer"
+                                        >
+                                            <h1 className="text-subTitle text-center  text-grey-400">
+                                                Hapus Semua
+                                            </h1>
+                                        </div>
                                     )}
+                                </div>
                                 <button
                                     onClick={toPacketList}
                                     className="bg-orange col-span-2 md:col-start-2 md:col-end-3 md:justify-self-end h-9 self-center md:self-center py-2 px-9 "
