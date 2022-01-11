@@ -7,10 +7,15 @@ export function InputContextWrapper({ children }) {
     const toggle = () => setShow(!show);
 
     let [packet, setPacket] = useState([]);
-    const addPacket = (packet) => {
-        setPacket((prev) => [...prev, packet]);
+    const addPacket = (data) => {
+        if (packet.includes(data)) {
+            return setPacket((prev) => [...prev]);
+        } else {
+            return setPacket((prev) => [...prev, data]);
+        }
     };
-    const removePacket = (data) => packet.splice(packet.indexOf(data), 1);
+    const removePacket = (data) =>
+        setPacket(packet.filter((item) => item !== data));
     const deleteAll = () => setPacket([]);
     return (
         <InputContext.Provider
