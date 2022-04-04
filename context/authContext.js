@@ -8,7 +8,7 @@ import {
     FacebookAuthProvider,
     signOut,
 } from 'firebase/auth';
-import { app } from '../firebase/firebase';
+import app from '../firebase/firebase';
 export const AuthContext = createContext();
 
 export function AuthContextWrapper({ children }) {

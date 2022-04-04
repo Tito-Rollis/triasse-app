@@ -30,7 +30,6 @@ export default function Home() {
     }, [val]);
 
     // FIND PACKET BUTTON
-    const [getPacket, setGetPacket] = useState(packet);
     const router = useRouter();
     const toPacketList = () => router.push('/packet');
 
@@ -52,7 +51,7 @@ export default function Home() {
                     <div
                         className={`absolute flex flex-col left-10 right-10 top-3/4 shadow-lg`}
                     >
-                        {/* 1st HEADER */}
+                        {/* 1st SECTION */}
                         <div
                             className={`w-full bg-whiteBlue px-6 md:px-14 rounded-sm  grid grid-cols-2 grid-rows-2 md:grid-rows-1`}
                         >
@@ -74,7 +73,7 @@ export default function Home() {
                                 />
                             </div>
                         </div>
-                        {/* 2nd HEADER */}
+                        {/* 2nd SECTION */}
                         <div className="grid md:grid-cols-1 px-2 md:px-14 md:grid-rows-2 bg-white py-3 w-full">
                             <div className="flex flex-wrap gap-x-3">
                                 <div className="md:flex-1 w-full">

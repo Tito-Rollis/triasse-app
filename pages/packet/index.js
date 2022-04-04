@@ -14,7 +14,7 @@ import PacketCardComponent from '../../components/packetCardComponent/packetCard
 
 export default function Home() {
     const { val } = useContext(NavbarContext);
-    const { toggle, show, packet } = useContext(InputContext);
+    const { toggle, show, packet, deleteAll } = useContext(InputContext);
     const [flex, setFlex] = useState('hidden');
 
     useEffect(() => {
@@ -123,21 +123,26 @@ export default function Home() {
                                     <ModalComponent />
                                 </div>
                             </div>
-                            <div className="grid grid-cols-2">
-                                {getPacket &&
-                                    getPacket.map((value, index) => (
-                                        <ResultComponent
-                                            key={index}
-                                            title={value}
-                                        />
-                                    ))}
-                                {getPacket.length >= 1 && (
-                                    <div className="rounded-sm w-fit flex items-center justify-between p-3 h-10 bg-grey-300">
-                                        <h1 className="text-subTitle text-center  text-grey-400">
-                                            Hapus Semua
-                                        </h1>
-                                    </div>
-                                )}
+                            <div className="grid ">
+                                <div className="col-start-1 col-end-2 flex flex-wrap gap-2">
+                                    {packet &&
+                                        packet.map((value, index) => (
+                                            <ResultComponent
+                                                key={index}
+                                                title={value}
+                                            />
+                                        ))}
+                                    {packet.length >= 1 && (
+                                        <div
+                                            onClick={deleteAll}
+                                            className="rounded-sm w-fit flex items-center justify-between p-3 h-10 bg-grey-300 cursor-pointer"
+                                        >
+                                            <h1 className="text-subTitle text-center  text-grey-400">
+                                                Hapus Semua
+                                            </h1>
+                                        </div>
+                                    )}
+                                </div>
                                 <button
                                     onClick={toPacketList}
                                     className="bg-orange col-span-2 md:col-start-2 md:col-end-3 md:justify-self-end h-9 self-center md:self-center py-2 px-9 "
